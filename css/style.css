@@ -541,7 +541,7 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
 .testimonial-stars .stars-fg{
   position: absolute; top: 0; left: 0; overflow: hidden; white-space: nowrap;
   width: calc(var(--rating) / 5 * 100%);
-  color: var(--color-accent);
+  color: #fbbf24;
 }
 .testimonial-rating-num{ font-size: 0.78rem; font-weight: 700; color: var(--color-muted); }
 .testimonial-quote{
