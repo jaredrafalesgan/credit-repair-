@@ -456,7 +456,10 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
     rgba(3,12,22,0.32) 60%,
     rgba(3,12,24,0.15) 100%);
 }
-.cta-photo-inner{ position: relative; z-index: 2; max-width: 560px; }
+.cta-photo-inner{
+  position: relative; z-index: 2; max-width: 560px;
+  padding-left: clamp(24px, 6vw, 110px);
+}
 .cta-photo-title{
   font-family: var(--font-display); font-weight: 800;
   font-size: clamp(1.9rem, 3.6vw, 2.6rem); line-height: 1.2; margin: 16px 0 20px;
