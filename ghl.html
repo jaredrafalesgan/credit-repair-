@@ -305,6 +305,7 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
   border: 1px solid var(--color-border-strong); color: var(--color-accent);
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
 }
+.draft-tag--pill{ margin-top: 0; margin-bottom: 16px; }
 
 .stats-note{ margin-top: 20px; font-size: 0.85rem; opacity: 0.7; }
 
@@ -535,16 +536,38 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
   to{ transform: translateX(-50%); }
 }
 .testimonial-card{
-  flex: 0 0 300px; width: 300px; height: 230px;
+  flex: 0 0 300px; width: 300px; height: 268px;
   display: flex; flex-direction: column;
   padding: 24px 24px; border-radius: var(--radius-lg);
 }
-.testimonial-stars{ color: var(--color-accent); letter-spacing: 3px; font-size: 0.95rem; margin-bottom: 14px; flex-shrink: 0; }
+.testimonial-header{
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 14px; flex-shrink: 0;
+}
+.testimonial-stars{
+  position: relative; display: inline-block;
+  letter-spacing: 3px; font-size: 0.95rem; line-height: 1;
+}
+.testimonial-stars .stars-bg{ color: rgba(148, 163, 184, 0.25); }
+.testimonial-stars .stars-fg{
+  position: absolute; top: 0; left: 0; overflow: hidden; white-space: nowrap;
+  width: calc(var(--rating) / 5 * 100%);
+  color: var(--color-accent);
+}
+.testimonial-rating-num{ font-size: 0.78rem; font-weight: 700; color: var(--color-muted); }
 .testimonial-quote{
   font-size: 0.9rem; line-height: 1.55; margin: 0 0 16px; flex: 1;
   display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;
 }
-.testimonial-name{ font-weight: 700; color: var(--color-text); margin: 0; font-size: 0.85rem; flex-shrink: 0; }
+.testimonial-author{ display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.testimonial-avatar{
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(148, 163, 184, 0.14); color: var(--color-muted);
+}
+.testimonial-avatar svg{ width: 20px; height: 20px; }
+.testimonial-name{ font-weight: 700; color: var(--color-text); margin: 0; font-size: 0.85rem; }
+.testimonial-role{ font-size: 0.75rem; color: var(--color-muted); margin: 0; }
 
 @media (max-width: 860px){
   .testimonial-card{ flex-basis: 270px; width: 270px; }
@@ -1037,162 +1060,431 @@ input:focus, select:focus, textarea:focus{
   <!-- ===== TESTIMONIALS ===== -->
   <section class="section section--alt testimonial-section" id="testimonials">
     <div class="container reveal">
-      <span class="eyebrow">Client Experiences</span>
+      <span class="draft-tag draft-tag--pill">Illustrative Testimonials — Sample Content</span>
       <h2 class="section-title">See What Our Clients Have to Say</h2>
-      <span class="draft-tag">Illustrative Testimonials — Sample Content</span>
     </div>
 
     <div class="testimonial-carousel reveal" id="testimonialCarousel">
       <div class="testimonial-track">
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.8;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.8</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I always felt overwhelmed looking at my credit report, but having someone walk me through it line by line made a real difference. I finally understand what I'm working with.&rdquo;</p>
-          <p class="testimonial-name">— Danielle R.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Danielle R.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;The consultation was straightforward and didn't feel like a sales pitch. I left with an actual plan instead of just a list of promises.&rdquo;</p>
-          <p class="testimonial-name">— Marcus T.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Marcus T.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.6;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.6</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I wanted to build credit for my new business but had no idea where to start. Now I at least know the right questions to ask.&rdquo;</p>
-          <p class="testimonial-name">— Priya K.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Priya K.</p>
+              <p class="testimonial-role">Business Owner</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Nobody had explained the difference between a hard and soft inquiry to me before. Small thing, but it made everything else click.&rdquo;</p>
-          <p class="testimonial-name">— Jordan M.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Jordan M.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.9;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.9</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I've read a dozen articles about credit repair and none of it clicked until someone applied it to my actual situation.&rdquo;</p>
-          <p class="testimonial-name">— Sofia L.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Sofia L.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I was skeptical going in, but the process felt honest the whole way through. No pressure, just information.&rdquo;</p>
-          <p class="testimonial-name">— Andre B.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Andre B.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.7;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.7</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Between work and school, I don't have time to become a credit expert myself. It helped to have someone break it down in plain language.&rdquo;</p>
-          <p class="testimonial-name">— Kayla W.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Kayla W.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.8;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.8</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I came in focused on my personal credit and walked out understanding a few things about business credit too. Wasn't expecting that.&rdquo;</p>
-          <p class="testimonial-name">— Tyler H.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Tyler H.</p>
+              <p class="testimonial-role">Small Business Owner</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.3;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.3</span>
+          </div>
           <p class="testimonial-quote">&ldquo;The dispute process always felt like a black box to me. Now I actually understand what's being disputed and why.&rdquo;</p>
-          <p class="testimonial-name">— Renee P.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Renee P.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Good communication from start to finish. I never felt like I was chasing anyone for updates.&rdquo;</p>
-          <p class="testimonial-name">— Malik S.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Malik S.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.6;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.6</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I appreciated that they were upfront about what to expect instead of overselling things.&rdquo;</p>
-          <p class="testimonial-name">— Grace O.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Grace O.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I'm still early in the process, but I already feel more in control of my credit than I did a few months ago.&rdquo;</p>
-          <p class="testimonial-name">— Devin C.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Devin C.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.9;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.9</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Helpful without being pushy. They answered my questions instead of steering me straight to a package.&rdquo;</p>
-          <p class="testimonial-name">— Amara J.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Amara J.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I went in mostly confused about my report and came out with an actual checklist. That alone was worth the conversation.&rdquo;</p>
-          <p class="testimonial-name">— Ben F.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Ben F.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass">
-          <div class="testimonial-stars" aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.7;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.7</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Setting up business credit felt intimidating until it was broken down into steps I could actually follow.&rdquo;</p>
-          <p class="testimonial-name">— Latoya G.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Latoya G.</p>
+              <p class="testimonial-role">Business Owner</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.8;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.8</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I always felt overwhelmed looking at my credit report, but having someone walk me through it line by line made a real difference. I finally understand what I'm working with.&rdquo;</p>
-          <p class="testimonial-name">— Danielle R.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Danielle R.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;The consultation was straightforward and didn't feel like a sales pitch. I left with an actual plan instead of just a list of promises.&rdquo;</p>
-          <p class="testimonial-name">— Marcus T.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Marcus T.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.6;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.6</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I wanted to build credit for my new business but had no idea where to start. Now I at least know the right questions to ask.&rdquo;</p>
-          <p class="testimonial-name">— Priya K.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Priya K.</p>
+              <p class="testimonial-role">Business Owner</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Nobody had explained the difference between a hard and soft inquiry to me before. Small thing, but it made everything else click.&rdquo;</p>
-          <p class="testimonial-name">— Jordan M.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Jordan M.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.9;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.9</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I've read a dozen articles about credit repair and none of it clicked until someone applied it to my actual situation.&rdquo;</p>
-          <p class="testimonial-name">— Sofia L.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Sofia L.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I was skeptical going in, but the process felt honest the whole way through. No pressure, just information.&rdquo;</p>
-          <p class="testimonial-name">— Andre B.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Andre B.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.7;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.7</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Between work and school, I don't have time to become a credit expert myself. It helped to have someone break it down in plain language.&rdquo;</p>
-          <p class="testimonial-name">— Kayla W.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Kayla W.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.8;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.8</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I came in focused on my personal credit and walked out understanding a few things about business credit too. Wasn't expecting that.&rdquo;</p>
-          <p class="testimonial-name">— Tyler H.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Tyler H.</p>
+              <p class="testimonial-role">Small Business Owner</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.3;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.3</span>
+          </div>
           <p class="testimonial-quote">&ldquo;The dispute process always felt like a black box to me. Now I actually understand what's being disputed and why.&rdquo;</p>
-          <p class="testimonial-name">— Renee P.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Renee P.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Good communication from start to finish. I never felt like I was chasing anyone for updates.&rdquo;</p>
-          <p class="testimonial-name">— Malik S.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Malik S.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.6;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.6</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I appreciated that they were upfront about what to expect instead of overselling things.&rdquo;</p>
-          <p class="testimonial-name">— Grace O.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Grace O.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I'm still early in the process, but I already feel more in control of my credit than I did a few months ago.&rdquo;</p>
-          <p class="testimonial-name">— Devin C.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Devin C.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.9;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.9</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Helpful without being pushy. They answered my questions instead of steering me straight to a package.&rdquo;</p>
-          <p class="testimonial-name">— Amara J.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Amara J.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.5;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.5</span>
+          </div>
           <p class="testimonial-quote">&ldquo;I went in mostly confused about my report and came out with an actual checklist. That alone was worth the conversation.&rdquo;</p>
-          <p class="testimonial-name">— Ben F.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Ben F.</p>
+              <p class="testimonial-role">Client</p>
+            </div>
+          </div>
         </article>
         <article class="testimonial-card glass" aria-hidden="true">
-          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <div class="testimonial-header">
+            <div class="testimonial-stars" style="--rating:4.7;" aria-hidden="true"><span class="stars-bg">&#9733;&#9733;&#9733;&#9733;&#9733;</span><span class="stars-fg">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+            <span class="testimonial-rating-num">4.7</span>
+          </div>
           <p class="testimonial-quote">&ldquo;Setting up business credit felt intimidating until it was broken down into steps I could actually follow.&rdquo;</p>
-          <p class="testimonial-name">— Latoya G.</p>
+          <div class="testimonial-author">
+            <span class="testimonial-avatar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg></span>
+            <div>
+              <p class="testimonial-name">Latoya G.</p>
+              <p class="testimonial-role">Business Owner</p>
+            </div>
+          </div>
         </article>
       </div>
     </div>
