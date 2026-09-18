@@ -348,11 +348,15 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
 .service-card a, .product-card a{ color: var(--color-accent); font-weight: 600; }
 
 /* ============ Why Us ============ */
+.why-layout{
+  display: grid; grid-template-columns: minmax(240px, 320px) 1fr; gap: 48px; align-items: center;
+}
+.why-intro .btn{ margin-top: 28px; }
 .why-grid{
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; margin-top: 48px;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
 }
 .why-card{
-  border-radius: var(--radius-lg); overflow: hidden; display: flex; flex-direction: column;
+  border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column;
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .why-card:hover{
@@ -360,12 +364,29 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
   border-color: var(--color-border-strong);
   box-shadow: var(--shadow-glow);
 }
-.why-media{ width: 100%; aspect-ratio: 4 / 5; overflow: hidden; }
+.why-media{ position: relative; width: 100%; aspect-ratio: 1 / 1; overflow: hidden; }
 .why-photo{ width: 100%; height: 100%; object-fit: cover; display: block; }
-.why-body{ padding: 24px 28px 32px; }
-.why-number{
-  display: block; font-family: var(--font-display); font-size: 1.6rem; font-weight: 800;
-  color: transparent; -webkit-text-stroke: 1.5px var(--color-accent); margin-bottom: 12px;
+.why-badge{
+  position: absolute; top: 10px; left: 10px;
+  font-family: var(--font-display); font-weight: 800; font-size: 0.85rem;
+  color: var(--color-accent); background: rgba(2,8,18,0.65);
+  padding: 3px 9px; border-radius: 999px; backdrop-filter: blur(4px);
+}
+.why-badge--echo{
+  left: auto; right: 10px;
+  color: transparent; -webkit-text-stroke: 1px rgba(234,243,251,0.5);
+  background: none; padding: 3px 4px;
+}
+.why-body{ padding: 16px 16px 20px; }
+.why-body h3{ font-size: 1rem; margin-bottom: 8px; }
+.why-body p{ font-size: 0.82rem; line-height: 1.5; }
+
+@media (max-width: 960px){
+  .why-layout{ grid-template-columns: 1fr; }
+  .why-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 520px){
+  .why-grid{ grid-template-columns: 1fr; }
 }
 
 /* ============ Process ============ */
