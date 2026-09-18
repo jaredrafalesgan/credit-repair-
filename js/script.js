@@ -41,6 +41,33 @@
     revealEls.forEach(function(el){ observer.observe(el); });
   }
 
+  // Hero background video: respect reduced motion, and fall back gracefully
+  // to the dark gradient background if autoplay/decoding is blocked.
+  var heroVideo = document.getElementById('heroVideo');
+  if (heroVideo) {
+    if (reduceMotion) {
+      heroVideo.pause();
+    } else {
+      heroVideo.play().catch(function(){
+        heroVideo.style.display = 'none';
+      });
+      heroVideo.addEventListener('error', function(){
+        heroVideo.style.display = 'none';
+      });
+    }
+  }
+
+  // Subtle hero video parallax on scroll
+  if (heroVideo && !reduceMotion) {
+    var heroSection = document.getElementById('top');
+    window.addEventListener('scroll', function(){
+      var offset = Math.min(window.scrollY * 0.15, 60);
+      if (heroSection && window.scrollY < heroSection.offsetHeight) {
+        heroVideo.style.transform = 'translateY(' + offset + 'px)';
+      }
+    }, { passive: true });
+  }
+
   // Footer year
   var yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
