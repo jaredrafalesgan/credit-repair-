@@ -34,7 +34,13 @@
 }
 
 *, *::before, *::after{ box-sizing: border-box; }
-html{ scroll-behavior: smooth; scroll-padding-top: var(--header-h); }
+html{
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--header-h);
+  background: var(--color-bg);
+  min-height: 100%;
+  overscroll-behavior-y: none;
+}
 
 body{
   margin: 0;
@@ -43,6 +49,8 @@ body{
   font-family: var(--font-body);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overscroll-behavior-y: none;
 }
 
 @media (prefers-reduced-motion: reduce){
