@@ -365,11 +365,11 @@ p{ margin: 0 0 1em; color: var(--color-muted); }
 .product-body .btn{ margin-top: auto; }
 
 #digital-products .card-grid{
-  grid-template-columns: repeat(auto-fill, 190px);
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, 230px);
+  gap: 24px;
 }
 @media (max-width: 640px){
-  #digital-products .card-grid{ grid-template-columns: 1fr; max-width: 220px; margin-left: auto; margin-right: auto; }
+  #digital-products .card-grid{ grid-template-columns: 1fr; max-width: 260px; margin-left: auto; margin-right: auto; }
 }
 
 /* ============ Why Us ============ */
